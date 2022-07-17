@@ -1,0 +1,109 @@
+<!-- Update Visitor modal code start here  -->
+<div class="modal fade" tabindex="-1" id="updateClassesModal" ria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h5 class="modal-title text-light">User Admin</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         <form action="{% url 'curdAdmin' %}" method="post">
+          {% csrf_token %}
+          <div class="col-lg-12 row">
+            <div class="col-lg-6">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">User Type</label>
+              <select class="form-control" id="userType" name="userType" onchange="checkUserType(this.value);">
+                <option {% if instance.user_type == 'Customer'%}selected{% endif %}>Customer</option>
+                <option {% if instance.user_type == 'Trainer'%}selected{% endif %}>Trainer</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6" id="membershipdiv">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Membership</label>
+              <select class="form-control" id="membershipType" name="membershipType">
+                <option {% if instanceAcc.account_membership == 'Silver'%}selected{% endif %}>Silver</option>
+                <option {% if instanceAcc.account_membership == 'Gold'%}selected{% endif %}>Gold</option>
+                <option {% if instanceAcc.account_membership == 'Platinium'%}selected{% endif %}>Platinium</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6" id="customeramtdiv">
+            <div class="form-group">
+              <label for="camount">Customer Amount</label>
+              <input
+                type="text"
+                name="camount"
+                class="form-control"
+                id="camount"
+                value="{{instanceAcc.account_camount}}"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6" id="trainigpaydiv">
+            <div class="form-group">
+              <label for="tamount">Training Payment</label>
+              <input
+                type="text"
+                name="tamount"
+                class="form-control"
+                id="tamount"
+                value="{{instanceAcc.account_tamount}}"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6" id="remainigtimediv">
+            <div class="form-group">
+              <label for="remainingTime">Remaining Time</label>
+              <input
+                type="date"
+                name="remainingTime"
+                class="form-control"
+                id="remainingTime"
+                value="{{instanceAcc.next_pay_date_cust|date:'Y-m-d'}}"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6" id="paymentdatediv">
+            <div class="form-group">
+              <label for="remainingPayTime">Payment Date</label>
+              <input
+                type="date"
+                name="remainingPayTime"
+                class="form-control"
+                id="remainingPayTime"
+                value="{{instanceAcc.next_pay_date_trainer|date:'Y-m-d'}}"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6" id="trainerDiv">
+          <div class="control-group form-group">
+            <div class="controls">
+               <label>Trainer</label>
+               <select class="form-control" id="trainerName" name="trainerName">
+                   <option {% if TrainersData.trainer_name == instance.trainer_name %}selected{% endif %}>Admin Trainer</option>
+                   {% for TrainersData in TrainersData %}
+                   <option {% if TrainersData.trainer_name == instance.trainer_name %}selected{% endif %}>{{TrainersData.trainer_name}}</option>
+                   {% endfor %}
+                 </select>
+            </div>
+          </div>
+          {% if instance.user_type == 'Customer' %}
+          <input type="hidden" name="curUpdateFormData" id="curUpdateFormData" value="customerData">
+          {% else %}
+          <input type="hidden" name="curUpdateFormData" id="curUpdateFormData" value="trainerData">
+          {% endif %}
+        </div>
+            <input type="hidden" name="userId" id="userId" value="{{instance.id}}">
+        <div class="col-lg-12 modal-footer d-flex justify-content-center align-item-center">
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- Update Visitor modal code end here  -->

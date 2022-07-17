@@ -1,0 +1,213 @@
+<!-- Update User class for daily code start here  -->
+<div class="modal fade" tabindex="-1" id="updateClassesModalTrainer" ria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h5 class="modal-title text-light">Daily Training Session</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         <form action="{% url 'curdTrainerInsert' %}" method="post">
+          {% csrf_token %}
+          <div class="row col-lg-12">
+            <div class="col-lg-6" id="">
+                <div class="form-group">
+                  <label for="dayMonday">Monday</label>
+                  <input
+                    type="text"
+                    name="dayMonday"
+                    class="form-control"
+                    id="dayMonday"
+                    value="Monday"
+                    readonly
+                  />
+                </div>
+              </div>
+            <div class="col-lg-6" id="">
+                <div class="form-group">
+                  <label for="classMonday">Monday Session</label>
+                  <input
+                    type="text"
+                    name="classMonday"
+                    class="form-control"
+                    id="classMonday"
+                    value=""
+                  />
+                </div>
+              </div>
+            <div class="col-lg-6" id="">
+                <div class="form-group">
+                  <label for="dayTuesday">Tuesday</label>
+                  <input
+                    type="text"
+                    name="dayTuesday"
+                    class="form-control"
+                    id="dayTuesday"
+                    value="Tuesday"
+                    readonly
+                  />
+                </div>
+              </div>
+            <div class="col-lg-6" id="">
+                <div class="form-group">
+                  <label for="classTuesday">Tuesday Session</label>
+                  <input
+                    type="text"
+                    name="classTuesday"
+                    class="form-control"
+                    id="classTuesday"
+                    value=""
+                  />
+                </div>
+              </div>
+            <div class="col-lg-6" id="">
+                <div class="form-group">
+                  <label for="dayWednesday">Wednesday</label>
+                  <input
+                    type="text"
+                    name="dayWednesday"
+                    class="form-control"
+                    id="dayWednesday"
+                    value="Wednesday"
+                    readonly
+                  />
+                </div>
+              </div>
+            <div class="col-lg-6" id="">
+                <div class="form-group">
+                  <label for="classWednesday">Wednesday Session</label>
+                  <input
+                    type="text"
+                    name="classWednesday"
+                    class="form-control"
+                    id="classWednesday"
+                    value=""
+                  />
+                </div>
+              </div>
+            <div class="col-lg-6" id="">
+                <div class="form-group">
+                  <label for="dayThrusday">Thrusday</label>
+                  <input
+                    type="text"
+                    name="dayThrusday"
+                    class="form-control"
+                    id="dayThrusday"
+                    value="Thrusday"
+                    readonly
+                  />
+                </div>
+              </div>
+            <div class="col-lg-6" id="">
+                <div class="form-group">
+                  <label for="classThrusday">Thrusday Session</label>
+                  <input
+                    type="text"
+                    name="classThrusday"
+                    class="form-control"
+                    id="classThrusday"
+                    value=""
+                  />
+                </div>
+              </div>
+            <div class="col-lg-6" id="">
+                <div class="form-group">
+                  <label for="dayFriday">Friday</label>
+                  <input
+                    type="text"
+                    name="dayFriday"
+                    class="form-control"
+                    id="dayFriday"
+                    value="Friday"
+                    readonly
+                  />
+                </div>
+              </div>
+            <div class="col-lg-6" id="">
+                <div class="form-group">
+                  <label for="classFriday">Friday Session</label>
+                  <input
+                    type="text"
+                    name="classFriday"
+                    class="form-control"
+                    id="classFriday"
+                    value=""
+                  />
+                </div>
+              </div>
+            <div class="col-lg-6" id="">
+                <div class="form-group">
+                  <label for="daySaturday">Saturday</label>
+                  <input
+                    type="text"
+                    name="daySaturday"
+                    class="form-control"
+                    id="daySaturday"
+                    value="Saturday"
+                    readonly
+                  />
+                </div>
+              </div>
+            <div class="col-lg-6" id="">
+                <div class="form-group">
+                  <label for="classSaturday">Saturday Session</label>
+                  <input
+                    type="text"
+                    name="classSaturday"
+                    class="form-control"
+                    id="classSaturday"
+                    value=""
+                  />
+                </div>
+              </div>
+            <div class="col-lg-6" id="">
+                <div class="form-group">
+                  <label for="daySunday">Sunday</label>
+                  <input
+                    type="text"
+                    name="daySunday"
+                    class="form-control"
+                    id="daySunday"
+                    value="Sunday"
+                    readonly
+                  />
+                </div>
+              </div>
+            <div class="col-lg-6" id="">
+                <div class="form-group">
+                  <label for="classSunday">Sunday Session</label>
+                  <input
+                    type="text"
+                    name="classSunday"
+                    class="form-control"
+                    id="classSunday"
+                    value=""
+                  />
+                </div>
+              </div>
+            <div class="col-lg-6" id="">
+                <div class="form-group">
+                  <label for="classMessage">Message</label>
+                  <input
+                    type="text"
+                    name="classMessage"
+                    class="form-control"
+                    id="classMessage"
+                    value=""
+                  />
+                </div>
+              </div>
+          </div>
+          <input type="hidden" name="trainerCustId" value="{{instance.id}}">
+          <input type="hidden" name="trainerId" value="{{request.user.id}}">
+          <div class="col-lg-12 modal-footer d-flex justify-content-center align-item-center">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- Update User class for daily modal code end here  -->

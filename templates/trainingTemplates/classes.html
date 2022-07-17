@@ -1,0 +1,221 @@
+{% extends 'trainingTemplates/base.html' %}
+{% load static %}
+{% block title %}Classes{% endblock %}
+{% block body %}
+<!-- Class Details Section Begin -->
+<section class="class-details-section spad">
+    <div class="cd-pic">
+        <img src="{% static 'trainingStatic/img/banner-bg.jpg' %}" alt="">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="class-details-text">
+                    <div class="cd-text">
+                        <div class="cd-single-item">
+                            <h3>Body buiding</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                irure Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua accusantium doloremque
+                                laudantium. Excepteur sint occaecat cupidatat non proident sculpa.</p>
+                        </div>
+                        {% if trainer_object.id %}
+                        <div class="cd-single-item">
+                            <h3>Your Trainer</h3>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% if trainer_object.id %}
+                    <div class="cd-trainer">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="cd-trainer-text">
+                                    <div class="trainer-title">
+                                        <h4 class="text-success text-capitalize">{{trainer_object.trainer_name}}</h4>
+                                        <span class="text-dark">Gym Trainer</span>
+                                    </div>
+                                    <div class="trainer-social">
+                                        <a href="#"><i class="text-primary fa fa-facebook"></i></a>
+                                        <a href="#"><i class="text-primary fa fa-twitter"></i></a>
+                                        <a href="#"><i class="text-danger fa fa-youtube-play"></i></a>
+                                        <a href="#"><i class="text-danger fa fa-instagram"></i></a>
+                                        <a href="mailto:{{trainer_object.trainer_email}}"><i class="text-secondary fa  fa-envelope-o"></i></a>
+                                    </div>
+                                    <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                        tempor incididunt ut labore et dolore magna aliqua viverra maecenas lacus
+                                        vel facilisis.</p>
+                                    <ul class="trainer-info text-dark">
+                                        <li><span class="text-dark">Age</span>35</li>
+                                        <li><span class="text-dark">Weight</span>148lbs</li>
+                                        <li><span class="text-dark">Height</span>10' 2``</li>
+                                        <li><span class="text-dark">Occupation</span>Trainer</li>
+                                        <li><span class="text-dark">Contact</span>{{trainer_object.trainer_mobile}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Class Details Section End -->
+ <!-- Class Timetable Section Begin -->
+ <section class="class-timetable-section class-details-timetable spad pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="class-details-timetable_title">
+                    <h3>CLASSES TIMETABLE</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="class-timetable details-timetable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                                <th>Sunday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="class-time"><h5 style="color:Orange;">Task</h5></td>
+                                {% if class_object.ClassesDay_Mon_class == ''%}
+                                <td class="dark-bg blank-td"></td>
+                                {% else %}
+                                <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
+                                    <h6 class="text-white text-capitalize">{{class_object.ClassesDay_Mon_class}}</h6>
+                                </td>
+                                {% endif %}
+                                {% if class_object.ClassesDay_Tue_class == ''%}
+                                <td class="dark-bg blank-td"></td>
+                                {% else %}
+                                <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
+                                    <h6 class="text-white text-capitalize">{{class_object.ClassesDay_Tue_class}}</h6>
+                                </td>
+                                {% endif %}
+                                {% if class_object.ClassesDay_Wed_class == ''%}
+                                <td class="dark-bg blank-td"></td>
+                                {% else %}
+                                <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
+                                    <h6 class="text-white text-capitalize">{{class_object.ClassesDay_Wed_class}}</h6>
+                                </td>
+                                {% endif %}
+                                {% if class_object.ClassesDay_Thru_class == ''%}
+                                <td class="dark-bg blank-td"></td>
+                                {% else %}
+                                <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
+                                    <h6 class="text-white text-capitalize">{{class_object.ClassesDay_Thru_class}}</h6>
+                                </td>
+                                {% endif %}
+                                {% if class_object.ClassesDay_Fri_class == ''%}
+                                <td class="dark-bg blank-td"></td>
+                                {% else %}
+                                <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
+                                    <h6 class="text-white text-capitalize">{{class_object.ClassesDay_Fri_class}}</h6>
+                                </td>
+                                {% endif %}
+                                {% if class_object.ClassesDay_Sat_class == ''%}
+                                <td class="dark-bg blank-td"></td>
+                                {% else %}
+                                <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
+                                    <h6 class="text-white text-capitalize">{{class_object.ClassesDay_Sat_class}}</h6>
+                                </td>
+                                {% endif %}
+                                {% if class_object.ClassesDay_Sun_class == ''%}
+                                <td class="dark-bg blank-td"></td>
+                                {% else %}
+                                <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
+                                    <h6 class="text-white text-capitalize">{{class_object.ClassesDay_Sun_class}}</h6>
+                                </td>
+                                {% endif %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% if class_object.ClassMessage != '' %}
+        <div class="mt-4">
+            <h3 class="my-3" style="color:#f36100;">TRAINER MESSAGE</h3>
+            <span><p class="text-dark">{{ class_object.ClassMessage }}</p></span>
+        </div>
+        {% endif %}
+    </div>
+</section>
+<!-- Class Timetable Section End -->
+<!-- BMI Calculator Section Begin -->
+<section class="bmi-calculator-section spad pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="class-details-timetable_title mb-3">
+                    <h3 style="color: #f36100;">BMI CALCULATOR CHART</h3>
+                </div>
+                <div class="chart-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Bmi</th>
+                                <th>WEIGHT STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-bottom border-dark">
+                                <td class="point">Below 18.5</td>
+                                <td>Underweight</td>
+                            </tr>
+                            <tr class="border-bottom border-dark">
+                                <td class="point">18.5 - 24.9</td>
+                                <td>Healthy</td>
+                            </tr>
+                            <tr class="border-bottom border-dark">
+                                <td class="point">25.0 - 29.9</td>
+                                <td>Overweight</td>
+                            </tr>
+                            <tr>
+                                <td class="point">30.0 - and Above</td>
+                                <td>Obese</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="class-details-timetable_title mb-3">
+                    <h3 style="color: #f36100;">CALCULATE YOUR BMI</h3>
+                </div>
+                <div class="chart-calculate-form">
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" class="text-dark" id="bmiHeight" onkeyup="calculateBMI()" value="" placeholder="Height / c">
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="text" class="text-dark" id="bmiWeight" onkeyup="calculateBMI()" value="" placeholder="Weight / kg">
+                            </div>
+                            <div class="col-lg-12">
+                                <input type="text" class="text-dark" id="bmiCalculated" placeholder="Your BMI">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- BMI Calculator Section End -->
+{% endblock %}

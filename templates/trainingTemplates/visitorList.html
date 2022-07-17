@@ -1,0 +1,98 @@
+{% extends 'trainingTemplates/base.html' %} 
+{% load static %} 
+{% block title %}Visitor List{% endblock %} 
+{% block body %}
+<div class="custom-container">
+  <div class="row py-3">
+    <div class="col-lg-12">
+      <div class="section-title d-flex justify-content-left flex-column">
+        <h2>Visitor List</h2>
+      </div>
+    </div>
+  </div>
+  <table class="table align-middle bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th>Sr No</th>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Course Type</th>
+        <th>Message</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for VisitorValues in VisitorValue %}
+      <tr>
+        <td>
+          <p class="fw-normal mb-1 text-dark">{{forloop.counter}}</p>
+        </td>
+        <td>
+          <p class="fw-normal mb-1 text-dark">{{VisitorValues.contact_date}}</p>
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="ms-3">
+              <p class="fw-bold mb-1 text-dark">{{VisitorValues.contact_fname}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1 text-dark">{{VisitorValues.contact_email}}</p>
+        </td>
+        <td>
+            <p class="fw-normal mb-1 text-dark">{{VisitorValues.contact_mobile}}</p>
+        </td>
+        <td>
+            <p class="fw-normal mb-1 text-dark">{{VisitorValues.contact_club}}</p>
+        </td>
+        <td>{{VisitorValues.contact_message}}</td>
+        <td>{{VisitorValues.contact_status}}</td>
+        <td>
+          <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#updateModal" data-visitorId="{{VisitorValues.id}}" onclick="updateModel(this);">
+            Update
+          </button>
+          <a href="curdOperation/contactDel/{{VisitorValues.id}}" class="btn btn-sm btn-danger">
+            Delete
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<!-- Update Visitor modal code start here  -->
+<div class="modal fade" tabindex="-1" id="updateModal" ria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Visitor Update</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <form action="{% url 'UpdateOperation' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Visitor Status</label>
+          <select class="form-control" id="visitorStatus" name="visitorStatus">
+            <option>Fake</option>
+            <option>Relevent</option>
+          </select>
+        </div>
+        <input type="hidden" name="visitorId" id="visitorId" value="">
+        <input type="hidden" name="visitorType" id="visitorType" value="UpdateVisitor">
+      </div>
+      <div class="modal-footer d-flex justify-content-center align-item-center">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+<!-- Update Visitor modal code end here  -->
+{% endblock %}

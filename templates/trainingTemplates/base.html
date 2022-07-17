@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="eng">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Gym Template" />
+    <meta name="keywords" content="Gym, unica, creative, html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Css Styles -->
+    <link
+      rel="stylesheet"
+      href="{% static 'trainingStatic/css/bootstrap.min.css' %}"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'trainingStatic/css/font-awesome.min.css' %}"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'trainingStatic/css/flaticon.css' %}"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'trainingStatic/css/style.css' %}"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    {% include 'trainingTemplates/loginpopup.html' %} 
+    <!-- navbar start here  -->
+    <div style="position: sticky; top: 0; z-index: 99">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index"><img src="{% static 'trainingStatic/img/logo.png' %}" alt=""
+          /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="about">About Us</a>
+            </li>
+            {% if user.is_authenticated %}
+              {% if user.user_type == 'Customer' %}
+            <li class="nav-item active">
+              <a class="nav-link" href="classes">Classes</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="membership">Membership</a>
+            </li>
+            {% else %}
+            <li class="nav-item active">
+              <a class="nav-link" href="Trainees">Trainees</a>
+            </li>
+            {% endif %}
+            {% endif %}
+            <li class="nav-item active">
+              <a class="nav-link" href="services">Services</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="team">Our Team</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="contact">Contact</a>
+            </li>
+            {% if user.is_superuser %}
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Admin Pannel
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'customerList' %}">Customer List</a>
+                <a class="dropdown-item" href="{% url 'visitorList' %}">Vistor List</a>
+                <a class="dropdown-item" href="adminSetting">Setting</a>
+              </div>
+            </li>
+            {% endif %}
+          </ul>
+          <div class="canvas-social">
+            {% if user.is_anonymous %}
+            <a class="btn btn-warning mx-1" data-toggle="modal" data-target="#exampleModal" href="loginpopup">Login/Register</a>
+            {% else %}
+            {% if user.is_superuser %}
+             <span class="text-light">Welcome Admin</span>
+            <a class="btn btn-danger mx-1"  href="logoutUser">Logout</a>
+            {% else %}
+            <span class="text-light">Hello <span class="text-primary">{{user.first_name}}</span></span>
+            <a class="btn btn-danger mx-1"  href="logoutUser">Logout</a>
+            {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- navbar end here  -->
+
+    {% block body %}{% endblock %}
+
+    <!-- Footer -->
+    <section class="footer-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-4">
+            <div class="fs-about">
+              <div class="fa-logo py-3">
+                <a href="index"
+                  ><img src="{% static 'trainingStatic/img/logo.png' %}" alt=""
+                /></a>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore dolore magna aliqua endisse
+                ultrices gravida lorem.
+              </p>
+              <div class="fa-social custom-social">
+                <a href="#"><i class="pl-2 fa fa-facebook"></i></a>
+                <a href="#"><i class="pl-2 fa fa-twitter"></i></a>
+                <a href="#"><i class="pl-2 fa fa-youtube-play"></i></a>
+                <a href="#"><i class="pl-2 fa fa-instagram"></i></a>
+                <a href="#"><i class="pl-2 fa fa-envelope-o"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-6">
+            <div class="fs-widget">
+              <h4 class="text-light py-3">Useful links</h4>
+              <ul>
+                <li><a href="about">About</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="classes">Classes</a></li>
+                <li><a href="contact">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-6">
+            <div class="fs-widget">
+              <h4 class="text-light py-3">Support</h4>
+              <ul>
+                <li><a href="services">Services</a></li>
+                <li><a href="team">Teams</a></li>
+                <li><a href="privacy">Privacy policy</a></li>
+                <li><a href="faq">Faq</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="fs-widget">
+              <h4 class="text-light py-3">Tips &amp; Guides</h4>
+              <div class="fw-recent">
+                <h6>
+                  <a class="text-primary"
+                    >Physical fitness may help prevent depression, anxiety</a
+                  >
+                </h6>
+                <ul>
+                  <li>3 min read</li>
+                  <li class="pl-3">20 Comment</li>
+                </ul>
+              </div>
+              <div class="fw-recent">
+                <h6>
+                  <a class="text-primary"
+                    >Fitness: The best exercise to lose belly fat and tone
+                    up...</a
+                  >
+                </h6>
+                <ul>
+                  <li>3 min read</li>
+                  <li class="pl-3">20 Comment</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="bg-light" />
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <div class="copyright-text">
+              <p class="my-2">
+                Copyright ©
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                All rights reserved | Made with
+                <i class="fa fa-heart text-danger" aria-hidden="true"></i> by FiveClover.com
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ./Footer -->
+    <!-- Js Plugins -->
+    <script src="{% static 'trainingStatic/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'trainingStatic/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'trainingStatic/js/app.js' %}"></script>
+  </body>
+</html>

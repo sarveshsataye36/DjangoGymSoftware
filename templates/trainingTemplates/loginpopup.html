@@ -1,0 +1,194 @@
+<!-- Modal start here -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h5 class="modal-title text-light" id="loginpopupheader">Login</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="container login-modal-right py-3">
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane active" id="login" role="tabpanel">
+              <form method="POST" action="{% url 'loginUser' %}" id="loginForm" name="loginForm">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="loginEmail">User Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="loginEmail"
+                    name="loginEmail"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="loginPass">Password</label>
+                  <input
+                    type="password"
+                    name="loginPass"
+                    class="form-control"
+                    id="loginPass"
+                  />
+                </div>
+                <input type="hidden" name="loginCheck" value="loginCheck">
+                <div class="form-group form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="exampleCheck1"
+                  />
+                  <label class="form-check-label" for="exampleCheck1"
+                    >Check me out</label
+                  >
+                </div>
+                <div class="text-center mb-4">
+                  <button type="submit" class="my-2 btn btn-primary btn-block">
+                    Login
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="tab-pane" id="register" role="tabpanel">
+              <form method="post" action="{% url 'registerUser' %}" name="registerForm" id="registerForm">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="registerUserName">User Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="registerUserName"
+                    name="registerUserName"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="row mb-3">
+                  <div class="col">
+                    <label for="firstName">Frist Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="firstName"
+                      name="firstName"
+                      placeholder="First name"
+                    />
+                  </div>
+                  <div class="col">
+                    <label for="lastName">Last Name</label>
+                    <input
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      class="form-control"
+                      placeholder="Last name"
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="registerEmail">Email address</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="registerEmail"
+                    name="registerEmail"
+                    aria-describedby="emailHelp"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >We'll never share your email with anyone else.</small
+                  >
+                </div>
+                <div class="form-group">
+                  <label for="registerMob">Mobile No</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="registerMob"
+                    name="registerMob"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="registerPass">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="registerPass"
+                    name="registerPass"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="registerConPass">Confirm Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="registerConPass"
+                    name="registerConPass"
+                  />
+                </div>
+                <input type="hidden" name="registerdetails" id="registerdetails" value="registerdetails">
+                <div class="mb-3 custom-control custom-checkbox">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck2"
+                  />
+                  <label class="custom-control-label" for="customCheck2"
+                    >I Agree with
+                    <a href="privacy" class="text-primary"
+                      >Term and Conditions</a
+                    ></label
+                  >
+                </div>
+                <button type="submit" class="mb-3 btn btn-success btn-block">
+                  Register
+                </button>
+              </form>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="text-center login-footer-tab">
+            <ul class="nav nav-tabs d-flex justify-content-around align-item-center" role="tablist">
+              <li class="nav-item border-0" style="width: 48%">
+                <a
+                  class="nav-link loginTabButtons active"
+                  data-toggle="tab"
+                  href="#login"
+                  role="tab" style="border: 1px solid #3e99ff59 !important;color: #2c00ff !important;background-color: #3e99ff59 !important;" onclick="toggleHeading('login');"
+                  ><i
+                    class="fa fa-lock"
+                  ></i>
+                  LOGIN</a
+                >
+              </li>
+              <li class="nav-item border-0" style="width: 48%">
+                <a
+                  class="loginTabButtons nav-link"
+                  data-toggle="tab"
+                  href="#register"
+                  role="tab"
+                  style="
+                    border: 1px solid #0ecc3859 !important;color: #0a6c20 !important;background-color: #0ecc3859 !important;" onclick="toggleHeading('register');"
+                  ><i class="fa fa-pencil"></i> REGISTER</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- Modal ends Here  -->
