@@ -1,0 +1,26 @@
+1. membership upgrade or activate request
+2. trainer or user info update
+3. user or trainer forget password
+4. website and software responsive
+5. customize option to website
+6. error handling
+7. page redirect issues and page not found
+8. trainer change request
+9. data backup option for admin and data restore option for admin
+10.Invoice generate to after payment
+11.JavaScript validation for forms 
+12.Privacy policy page  
+13.Payment gateway if required
+14.admin dashbord
+15.Payment Table entry
+14.Code Cleaning 
+
+............................. Done Task List ......................................
+1. Admin, trainer, Customer login 
+2. Admin can change normal user to Trainer
+3. Admin can assign tainer and take paymemt from customer and make payment to trainer
+4. tariner can assign user a training chart
+5. user can check which membership is currently activate
+6. admin can deactive any account of trainer or customer
+7. Contact us form can collect data and show to admin in visitor tab
+8. only tariner get selected user from admin and only show to that trainer
